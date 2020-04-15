@@ -9,7 +9,14 @@ services:
       - backend
     depends_on:
       - db
-  
+    environment:
+      - NEO4J_PROTOCOL=bolt
+      - NEO4J_HOST=db
+      - NEO4J_USERNAME=neo4j
+      - NEO4J_PASSWORD=root
+      - NEO4J_PORT=7687
+      - NEO4J_ENCRYPTION=ENCRYPTION_OFF
+
   db:
     image: neo4j:4.0
     ports:
@@ -20,7 +27,7 @@ services:
     networks:
       - backend
     environment:
-      NEO4J_dbms_connector_bolt_advertised__address: "localhost:7687"
+      - NEO4J_dbms_connector_bolt_advertised__address=localhost:7687
 
 networks:
   backend:
