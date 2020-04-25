@@ -1,0 +1,6 @@
+dependencies:
+- name: neo4j
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 2.0.0
+digest: sha256:19e9866b40356f60120fd9cd524f5621901c7b2b3f666d690a9f0a50909a7575
+generated: "2020-04-25T15:16:12.8772031-03:00"
