@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  labels:
+    app: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: chanep/api-test:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NEO4J_PROTOCOL
+              value: "bolt"
+            - name: NEO4J_HOST
+              value: "db-service"
+            - name: NEO4J_USERNAME
+              value: "neo4j"
+            - name: NEO4J_PASSWORD
+              value: "root"
+            - name: NEO4J_PORT
+              value: "7687"
+            - name: NEO4J_ENCRYPTION
+              value: "ENCRYPTION_OFF"
